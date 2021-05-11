@@ -5,13 +5,17 @@ import LetterListGenerator from './letter'
 class Letter extends React.Component {
     constructor(props) {
         super(props);
+        this.textStyle = {
+            fontSize: props.letterSize,
+            letterSpacing: 3
+        }
         this.letterSize = props.letterSize
         this.character = props.character
     }
 
     render() {
         return (
-            <Text style={{fontSize: this.letterSize}}>{this.character}</Text>
+            <Text style={this.textStyle}>{this.character}</Text>
         )
     }
 }
@@ -36,7 +40,7 @@ class Row extends React.Component {
         console.log("Generated letters:")
         console.log(this.state.generatedLettersList)
         return (
-            <View>
+            <View style={styles.row}>
                 {this.state.generatedLettersList.map((letter, key) => {
                     return (
                         <Letter letterSize={this.letterSize} character={letter} key={key}/>
@@ -65,5 +69,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#2c7587',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    row: {
+        flexDirection: "row"
     }
 });
