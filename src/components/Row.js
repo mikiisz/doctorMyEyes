@@ -37,8 +37,6 @@ class Row extends React.Component {
     }
 
     render() {
-        console.log("Generated letters:")
-        console.log(this.state.generatedLettersList)
         return (
             <View style={this.style}>
                 {this.state.generatedLettersList.map((letter, key) => {
