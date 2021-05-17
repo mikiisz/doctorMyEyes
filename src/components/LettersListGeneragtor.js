@@ -1,4 +1,4 @@
-export default class LetterListGenerator {
+class LetterListGenerator {
     numberOfLetters;
 
     constructor(numberOfLetters) {
@@ -15,3 +15,5 @@ export default class LetterListGenerator {
         return result;
     }
 }
+
+export default LetterListGenerator;

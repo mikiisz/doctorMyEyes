@@ -1,67 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import Row from './components/Row';
+import { StyleSheet, View } from "react-native";
 import { registerRootComponent } from 'expo';
-import LetterListGenerator from './letter'
-
-class Letter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.textStyle = {
-            fontSize: props.letterSize,
-            letterSpacing: 3
-        }
-        this.character = props.character
-    }
-
-    render() {
-        return (
-            <Text style={this.textStyle}>{this.character}</Text>
-        )
-    }
-}
-
-class Row extends React.Component {
-    constructor(props) {
-        super(props);
-        this.letterSize = props.letterSize
-        this.numberOfLetters = props.numberOfLetters
-        this.state = {
-            generatedLettersList: []
-        }
-    }
-
-    componentDidMount() {
-        this.setState({
-            generatedLettersList: new LetterListGenerator(this.numberOfLetters).generateLetters()
-        })
-    }
-
-    render() {
-        console.log("Generated letters:")
-        console.log(this.state.generatedLettersList)
-        return (
-            <View style={styles.row}>
-                {this.state.generatedLettersList.map((letter, key) => {
-                    return (
-                        <Letter letterSize={this.letterSize} character={letter} key={key} />
-                    );
-                })}
-            </View>
-        );
-    }
-}
-
-export default function App() {
-    return (
-        <View style={styles.container}>
-            <Row letterSize={120} numberOfLetters={1} />
-            <Row letterSize={80} numberOfLetters={2} />
-            <Row letterSize={50} numberOfLetters={4} />
-            <Row letterSize={20} numberOfLetters={5} />
-            <Row letterSize={10} numberOfLetters={8} />
-        </View>
-    );
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -74,5 +14,24 @@ const styles = StyleSheet.create({
         flexDirection: "row"
     }
 });
+
+class App extends React.Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Row style={styles.row} letterSize={120} numberOfLetters={1} />
+                <Row style={styles.row} letterSize={80} numberOfLetters={2} />
+                <Row style={styles.row} letterSize={50} numberOfLetters={4} />
+                <Row style={styles.row} letterSize={20} numberOfLetters={5} />
+                <Row style={styles.row} letterSize={10} numberOfLetters={8} />
+            </View>
+        );
+
+    }
+}
 
 registerRootComponent(App);
