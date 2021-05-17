@@ -1,5 +1,5 @@
 export default class LetterListGenerator {
-    numberOfLetters: string;
+    numberOfLetters;
 
     constructor(numberOfLetters) {
         this.numberOfLetters = numberOfLetters
