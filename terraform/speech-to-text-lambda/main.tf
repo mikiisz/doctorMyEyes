@@ -34,3 +34,11 @@ data "archive_file" "source_files" {
   source_dir = "${path.module}/../lambda/speech-to-text"
   type = "zip"
 }
+
+resource "aws_lambda_permission" "lambda_permission" {
+  statement_id = "speech-to-text-allow-execution"
+  action = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.speech_to_text_lambda.arn
+  principal = "apigateway.amazonaws.com"
+  source_arn = "arn:aws:execute-api:${var.aws_region}:${var.account_id}:${var.gateway_config.id}/*/${var.gateway_config.e2e_http_method}/${var.gateway_config.e2e_path_part}"
+}
