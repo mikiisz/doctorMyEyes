@@ -3,7 +3,7 @@ remote_state {
 
   config = {
     encrypt = true
-    bucket = "doctorMyEyes-state"
+    bucket = "doctormyeyes-state"
     key = "terraform.state"
     region = "us-east-1"
   }
