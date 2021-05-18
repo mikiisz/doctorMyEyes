@@ -8,7 +8,7 @@ function VoiceRecord(props) {
 
     async function startRecording() {
         try {
-            setUri(undefined)
+            setUri(undefined);
             console.log('Requesting permissions..');
             await Audio.requestPermissionsAsync();
             await Audio.setAudioModeAsync({
@@ -31,7 +31,7 @@ function VoiceRecord(props) {
         setRecording(undefined);
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
-        setUri(uri)
+        setUri(uri);
         console.log('Recording stopped and stored at', uri);
     }
 

@@ -1,7 +1,20 @@
 # Doctor, my eyes!
 👀
 
-## Starting app
+## AWS infrastucture
+
+![AWS infrastucture](./diagram.png)
+
 Run
-```npm start```
-from project root.
+```
+terragrunt init
+terragrunt apply
+```
+
+## EXPO app
+
+Run
+```
+npm install
+npm start
+```
