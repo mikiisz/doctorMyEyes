@@ -1,9 +1,9 @@
 # Doctor, my eyes!
 👀
 
-## AWS infrastucture
+## AWS infrastructure
 
-![AWS infrastucture](./diagram.png)
+![AWS infrastructure](./diagram.png)
 
 Run
 ```
