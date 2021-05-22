@@ -31,7 +31,7 @@ class App extends React.Component {
                     <Row style={styles.row} letterSize={20} numberOfLetters={5} />
                     <Row style={styles.row} letterSize={10} numberOfLetters={8} />
                 </View>
-                <VoiceRecord containerStyle={styles.container} textStyle={styles.row} />
+                <VoiceRecord />
             </React.Fragment>
         );
     }
