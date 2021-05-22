@@ -51,7 +51,7 @@ function VoiceRecord(props) {
                 method: 'POST',
                 body: formData
             });
-            const data = await response.json();  
+            const data = await response.json();
             setTranscript(data);
             console.log(`response: ${JSON.stringify(data)}`);
             setRecording(undefined);
