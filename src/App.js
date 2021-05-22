@@ -1,8 +1,9 @@
 import React from 'react';
-import Row from './components/Row';
 import VoiceRecord from './components/VoiceRecord';
-import { StyleSheet, View } from "react-native";
-import { registerRootComponent } from 'expo';
+import {StyleSheet, View} from "react-native";
+import {registerRootComponent} from 'expo';
+import Score from "./components/Score";
+import SnellenChart from "./components/SnellenChart";
 
 const styles = StyleSheet.create({
     container: {
@@ -11,8 +12,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    row: {
-        flexDirection: "row"
+    score: {
+        fontWeight: "bold",
+        color: "black",
+        fontSize: 120
     }
 });
 
@@ -25,13 +28,10 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <View style={styles.container}>
-                    <Row style={styles.row} letterSize={120} numberOfLetters={1} />
-                    <Row style={styles.row} letterSize={80} numberOfLetters={2} />
-                    <Row style={styles.row} letterSize={50} numberOfLetters={4} />
-                    <Row style={styles.row} letterSize={20} numberOfLetters={5} />
-                    <Row style={styles.row} letterSize={10} numberOfLetters={8} />
+                    <Score style={styles.score} score={0}/>
+                    <SnellenChart/>
                 </View>
-                <VoiceRecord />
+                <VoiceRecord/>
             </React.Fragment>
         );
     }

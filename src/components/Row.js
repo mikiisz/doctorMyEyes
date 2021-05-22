@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Letter from './Letter';
 
-class LetterSuplier {
+class LetterSupplier {
     numberOfLetters;
 
     constructor(numberOfLetters) {
@@ -10,8 +10,8 @@ class LetterSuplier {
     }
 
     generateLetters() {
-        const result = [];
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const result = []
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         for (let i = 0; i < this.numberOfLetters; i++) {
             result.push(characters.charAt(Math.floor(Math.random() * characters.length)));
         }
@@ -21,7 +21,7 @@ class LetterSuplier {
 
 class Row extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.letterSize = props.letterSize
         this.numberOfLetters = props.numberOfLetters
         this.style = props.style
@@ -32,7 +32,7 @@ class Row extends React.Component {
 
     componentDidMount() {
         this.setState({
-            generatedLettersList: new LetterSuplier(this.numberOfLetters).generateLetters()
+            generatedLettersList: new LetterSupplier(this.numberOfLetters).generateLetters()
         })
     }
 
