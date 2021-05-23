@@ -1,9 +1,9 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from 'react'
+import { Text } from 'react-native'
 
 class Letter extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.textStyle = {
             fontSize: props.letterSize,
             letterSpacing: 3
@@ -18,4 +18,4 @@ class Letter extends React.Component {
     }
 }
 
-export default Letter;
+export default Letter
