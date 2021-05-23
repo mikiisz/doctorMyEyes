@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 })
 
 // VoiceRecorder usage 101:
-// (1) .startRecording() - return Audio.Recording, starts audio recording on iOS (.wav) and Android (.mp4)
+// (1) .startRecording() - returns Audio.Recording, starts audio recording on iOS (.wav) and Android (.mp4)
 // (2) .saveTranscriptions() - returns transcriptId, stops recording and saves the audio in AWS
 // (3) .getTranscriptions(transcriptId) - returns transcripted text based on transcriptId
 function RecorderExample(props) {
