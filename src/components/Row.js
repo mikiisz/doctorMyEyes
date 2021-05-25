@@ -1,27 +1,27 @@
-import React from 'react';
-import { View } from 'react-native';
-import Letter from './Letter';
+import React from 'react'
+import { View } from 'react-native'
+import Letter from './Letter'
 
 class LetterSuplier {
-    numberOfLetters;
+    numberOfLetters
 
     constructor(numberOfLetters) {
         this.numberOfLetters = numberOfLetters
     }
 
     generateLetters() {
-        const result = [];
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const result = []
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         for (let i = 0; i < this.numberOfLetters; i++) {
-            result.push(characters.charAt(Math.floor(Math.random() * characters.length)));
+            result.push(characters.charAt(Math.floor(Math.random() * characters.length)))
         }
-        return result;
+        return result
     }
 }
 
 class Row extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.letterSize = props.letterSize
         this.numberOfLetters = props.numberOfLetters
         this.style = props.style
@@ -42,11 +42,11 @@ class Row extends React.Component {
                 {this.state.generatedLettersList.map((letter, key) => {
                     return (
                         <Letter letterSize={this.letterSize} character={letter} key={key} />
-                    );
+                    )
                 })}
             </View>
-        );
+        )
     }
 }
 
-export default Row;
+export default Row
