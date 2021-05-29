@@ -1,6 +1,6 @@
-import React from 'react';
-import { View } from 'react-native';
-import Letter from './Letter';
+import React from 'react'
+import { View } from 'react-native'
+import Letter from './Letter'
 
 class LetterSupplier {
     numberOfLetters;
@@ -13,9 +13,9 @@ class LetterSupplier {
         const result = []
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         for (let i = 0; i < this.numberOfLetters; i++) {
-            result.push(characters.charAt(Math.floor(Math.random() * characters.length)));
+            result.push(characters.charAt(Math.floor(Math.random() * characters.length)))
         }
-        return result;
+        return result
     }
 }
 
@@ -42,11 +42,11 @@ class Row extends React.Component {
                 {this.state.generatedLettersList.map((letter, key) => {
                     return (
                         <Letter letterSize={this.letterSize} character={letter} key={key} />
-                    );
+                    )
                 })}
             </View>
-        );
+        )
     }
 }
 
-export default Row;
+export default Row
