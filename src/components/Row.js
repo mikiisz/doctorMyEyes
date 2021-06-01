@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import {View} from 'react-native'
 import Letter from './Letter'
 
 class LetterSupplier {
@@ -25,23 +25,41 @@ class Row extends React.Component {
         this.letterSize = props.letterSize
         this.numberOfLetters = props.numberOfLetters
         this.style = props.style
-        this.state = {
-            generatedLettersList: []
-        }
+        this.generatedLettersList = new LetterSupplier(this.numberOfLetters).generateLetters()
     }
 
-    componentDidMount() {
-        this.setState({
-            generatedLettersList: new LetterSupplier(this.numberOfLetters).generateLetters()
-        })
+    sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
+
+    highlightLetters() {
+        function highlight(letter_i) {
+            letter_i.changeColourToRed()
+            // this.props.recordVoice()
+            // this.sleep(3000)
+            setTimeout(function () {
+                letter_i.changeColourToBlack()
+            }, 3000)
+        }
+
+        for (let i = 0; i < this.generatedLettersList.length; i++) {
+            const letter_i = this.refs['letter' + i]
+            setTimeout(() => highlight(letter_i), 3000 * (i + 1))
+            // this.refs['letter' + i].changeColourToBlack()
+        }
+        // alert('Letters in the row are coloured')
     }
 
     render() {
         return (
             <View style={this.style}>
-                {this.state.generatedLettersList.map((letter, key) => {
+                {this.generatedLettersList.map((letter, key) => {
                     return (
-                        <Letter letterSize={this.letterSize} character={letter} key={key} />
+                        <Letter ref={'letter' + key} letterSize={this.letterSize} character={letter} key={key}/>
                     )
                 })}
             </View>

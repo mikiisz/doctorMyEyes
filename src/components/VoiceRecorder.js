@@ -1,6 +1,6 @@
-import { Audio } from 'expo-av'
+import {Audio} from 'expo-av'
 import config from '../../config'
-import { Buffer } from 'buffer'
+import {Buffer} from 'buffer'
 import * as FileSystem from 'expo-file-system'
 
 class VoiceRecorder {
@@ -30,11 +30,19 @@ class VoiceRecorder {
         return recording
     }
 
+    async mockStartRecording() {
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+        await sleep(3000)
+        return 'RECORDING'
+    }
+
     async saveTranscription(recording) {
         await recording.stopAndUnloadAsync()
         const uri = recording.getURI()
         const fileExtension = uri.substr(uri.lastIndexOf('.') + 1)
-        const base64 = await FileSystem.readAsStringAsync(uri, { encoding: 'base64' })
+        const base64 = await FileSystem.readAsStringAsync(uri, {encoding: 'base64'})
         const buffer = new Buffer.from(base64, 'base64')
         const response = await fetch(config.TRANSCRIPT_GATEWAY, {
             method: 'POST',
