@@ -19,7 +19,8 @@ export default class SnellenChart extends React.Component {//(recordVoice) { // 
     }
 
     generateRows() {
-        const letterInfoList = [{letterSize: 120, numberOfLetters: 1}, {letterSize: 80, numberOfLetters: 2},
+        const letterInfoList = [
+            {letterSize: 120, numberOfLetters: 1}, {letterSize: 80, numberOfLetters: 2},
             {letterSize: 50, numberOfLetters: 4}, {letterSize: 20, numberOfLetters: 5},
             {letterSize: 10, numberOfLetters: 8}
         ]

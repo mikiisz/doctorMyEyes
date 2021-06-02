@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, View} from "react-native";
+import {View} from "react-native";
 import Letter from "./Letter";
 
 class LetterSupplier {
@@ -36,15 +36,15 @@ const Row = React.forwardRef((props, ref) => {
         )
     })
 
+    let rowStyle = {
+        flexDirection: 'row',
+        justifyContent: 'center'
+    }
 
-    // render() {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20}}>
-            <Button title='randomButton'/>
+        <View style={rowStyle}>
             {letterList}
-            <Button title='randomB'/>
         </View>
-        // <View>{letterList}</View>
     )
 
     // function highlightLetters() {

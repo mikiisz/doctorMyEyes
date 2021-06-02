@@ -1,7 +1,6 @@
 import React from 'react'
 import {Text} from 'react-native'
 
-// TODO: mogę dodać booleana isHighlighted, a w Row wyświetlać literę inaczej w zależności od wartosci booleana
 class Letter extends React.Component {
     constructor(props) {
         super(props)
