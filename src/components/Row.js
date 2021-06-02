@@ -1,6 +1,6 @@
 import React from 'react'
-import {View} from 'react-native'
-import Letter from './Letter'
+import {Button, View} from "react-native";
+import Letter from "./Letter";
 
 class LetterSupplier {
     numberOfLetters;
@@ -19,52 +19,60 @@ class LetterSupplier {
     }
 }
 
-class Row extends React.Component {
-    constructor(props) {
-        super(props)
-        this.letterSize = props.letterSize
-        this.numberOfLetters = props.numberOfLetters
-        this.style = props.style
-        this.generatedLettersList = new LetterSupplier(this.numberOfLetters).generateLetters()
-    }
+const Row = React.forwardRef((props, ref) => {
 
-    sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-            currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-    }
-
-    highlightLetters() {
-        function highlight(letter_i) {
-            letter_i.changeColourToRed()
-            // this.props.recordVoice()
-            // this.sleep(3000)
-            setTimeout(function () {
-                letter_i.changeColourToBlack()
-            }, 3000)
-        }
-
-        for (let i = 0; i < this.generatedLettersList.length; i++) {
-            const letter_i = this.refs['letter' + i]
-            setTimeout(() => highlight(letter_i), 3000 * (i + 1))
-            // this.refs['letter' + i].changeColourToBlack()
-        }
-        // alert('Letters in the row are coloured')
-    }
-
-    render() {
+// export default function Row(letterSize, numberOfLetters, style) { //extends React.Component {
+    // constructor(props) {
+    //     super(props)
+    //     this.letterSize = props.letterSize
+    //     this.numberOfLetters = props.numberOfLetters
+    //     this.style = props.style
+    // }
+    let numberOfLetters = 5
+    let letterSize = 10
+    const generatedLettersList = new LetterSupplier(numberOfLetters).generateLetters()
+    const letterList = generatedLettersList.map((letter, key) => {
         return (
-            <View style={this.style}>
-                {this.generatedLettersList.map((letter, key) => {
-                    return (
-                        <Letter ref={'letter' + key} letterSize={this.letterSize} character={letter} key={key}/>
-                    )
-                })}
-            </View>
+            <Letter letterSize={letterSize} character={letter} key={key}/>
         )
-    }
-}
+    })
+
+
+    // render() {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20}}>
+            <Button title='randomButton'/>
+            {letterList}
+            <Button title='randomB'/>
+        </View>
+        // <View>{letterList}</View>
+    )
+
+    // function highlightLetters() {
+    //     function sleep(milliseconds) {
+    //         const date = Date.now();
+    //         let currentDate = null;
+    //         do {
+    //             currentDate = Date.now();
+    //         } while (currentDate - date < milliseconds);
+    //     }
+    //
+    //     function highlight(letter_i) {
+    //         letter_i.changeColourToRed()
+    //         // this.props.recordVoice()
+    //         sleep(500)
+    //         setTimeout(function () {
+    //             letter_i.changeColourToBlack()
+    //         }, 1000)
+    //     }
+    //
+    //     for (let i = 0; i < generatedLettersList.length; i++) {
+    //         const letter_i = letterList[i]
+    //         setTimeout(() => highlight(letter_i), 3000 * (i + 1))
+    //         // this.refs['letter' + i].changeColourToBlack()
+    //     }
+    //     // alert('Letters in the row are coloured')
+    // }
+})
 
 export default Row
