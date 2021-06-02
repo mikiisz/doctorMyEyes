@@ -28,12 +28,11 @@ const Row = React.forwardRef((props, ref) => {
     //     this.numberOfLetters = props.numberOfLetters
     //     this.style = props.style
     // }
-    let numberOfLetters = 5
-    let letterSize = 10
-    const generatedLettersList = new LetterSupplier(numberOfLetters).generateLetters()
+
+    const generatedLettersList = new LetterSupplier(props.numberOfLetters).generateLetters()
     const letterList = generatedLettersList.map((letter, key) => {
         return (
-            <Letter letterSize={letterSize} character={letter} key={key}/>
+            <Letter letterSize={props.letterSize} character={letter} key={key}/>
         )
     })
 
