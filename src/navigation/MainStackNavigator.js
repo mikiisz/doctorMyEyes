@@ -39,7 +39,8 @@ export default function MainStackNavigator() {
                 <Stack.Screen
                     name='EyesightTestResult'
                     component={EyesightTestResultScreen}
-                    options={{title: 'EyesightTestResultScreen'}}
+                    options={({route}) => ({title: 'EyesightTestResultScreen'},
+                        {score: route.params.score})}
                 />
             </Stack.Navigator>
         </NavigationContainer>

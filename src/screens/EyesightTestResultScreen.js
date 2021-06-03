@@ -1,14 +1,21 @@
 import React from "react"
 import {Button, Text, View} from "react-native"
 
-//todo
+class Score extends React.Component {
+    render() {
+        return <Text>Your score: <Text style={{fontWeight: 'bold'}}>{this.props.value}</Text> </Text>
+    }
+}
+
 export default function EyesightTestResultScreen(props) {
+    const {route, navigation} = props
+    const { score } = route.params
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Home Screen</Text>
+            <Score value={score}/>
             <Button
-                title="Start test!"
-                onPress={() => navigation.navigate('EyesightTest')}
+                title="Start test again!!"
+                onPress={() => navigation.navigate('Welcome')}
             />
         </View>
     );

@@ -7,7 +7,7 @@ class Letter extends React.Component {
         this.textStyle = {
             fontSize: props.letterSize,
             letterSpacing: 3,
-            color: 'black'
+            color: props.color
         }
         this.highlightedTextStyle = {
             fontSize: props.letterSize,
