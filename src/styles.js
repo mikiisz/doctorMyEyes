@@ -10,21 +10,19 @@ const styles = StyleSheet.create({
     letterContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: 0,
-        height: 0
+        width: 100,
+        height: 100
     },
     headerText: {
-        fontFamily: "Cochin",
         fontSize: 35,
         fontWeight: "bold"
     },
     contentText: {
-        fontFamily: "Cochin",
         fontSize: 20,
         marginTop: 20
     },
     authors: {
-        fontStyle: "Italic",
+        fontStyle: "italic",
         fontSize: 15,
         marginTop: 20
     },

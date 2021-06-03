@@ -1,8 +1,8 @@
 import React from 'react'
+import {registerRootComponent} from "expo"
 import MainStackNavigator from "./src/navigation/MainStackNavigator"
-import {registerRootComponent} from "expo";
 
-export default function App() {
+function App() {
     return <MainStackNavigator/>
 }
 
