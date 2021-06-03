@@ -30,14 +30,6 @@ class VoiceRecorder {
         return recording
     }
 
-    async mockStartRecording() {
-        const sleep = (milliseconds) => {
-            return new Promise(resolve => setTimeout(resolve, milliseconds))
-        }
-        await sleep(3000)
-        return 'RECORDING'
-    }
-
     async saveTranscription(recording) {
         await recording.stopAndUnloadAsync()
         const uri = recording.getURI()
