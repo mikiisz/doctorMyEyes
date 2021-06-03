@@ -1,6 +1,6 @@
 import {Text, TouchableOpacity, View} from "react-native"
 import React from "react"
-import {styles} from "../styles";
+import {styles} from "../styles"
 
 export default function WelcomeScreen(props) {
     const {navigation} = props

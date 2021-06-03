@@ -1,5 +1,5 @@
-import React from "react";
-import {Text} from "react-native";
+import React from "react"
+import {Text} from "react-native"
 
 class Score extends React.Component {
     constructor(props) {
@@ -11,8 +11,8 @@ class Score extends React.Component {
     render() {
         return (
             <Text style={this.style}>{this.score}</Text>
-        );
+        )
     }
 }
 
-export default Score;
+export default Score
