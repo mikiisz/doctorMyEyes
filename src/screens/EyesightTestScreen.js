@@ -1,5 +1,5 @@
 import React from "react"
-import LetterSupplier from "../components/Row";
+import LetterSupplier from "../components/LetterSuppler";
 import {Button, Text, View} from "react-native";
 import calculateScore from "../components/ScoreCalculator";
 
@@ -8,12 +8,13 @@ export default class EyesightTestScreen extends React.Component {
     constructor(props) {
         super(props)
 
-        this.letterSizes = [120, 80, 50, 20, 5, 10, 8]
+        this.letterSizes = [120, 80, 50, 20, 15, 10, 8]
         this.letterSupplier = new LetterSupplier()
 
         this.state = {
             letter: {},
-            numberOfLetter: 0
+            numberOfLetter: 0,
+            correctAnswers: []
         }
         this.updateLetter = this.updateLetter.bind(this)
         this.navigateToTestResults = this.navigateToTestResults.bind(this)
@@ -33,10 +34,13 @@ export default class EyesightTestScreen extends React.Component {
     updateLetter() {
         if (this.shouldUpdateLetter()) {
             let numberOfLetter = this.state.numberOfLetter
+            let correctAnswers = this.state.correctAnswers
+            let newCharacter = this.letterSupplier.generateLetter()
             this.setState(() => ({
                         letter: {
                             letterSize: this.letterSizes[numberOfLetter],
-                            character: this.letterSupplier.generateLetter()
+                            character: newCharacter,
+                            correctAnswers: correctAnswers.push(newCharacter.toLowerCase())
                         },
                         numberOfLetter: numberOfLetter + 1
                     }
@@ -55,11 +59,8 @@ export default class EyesightTestScreen extends React.Component {
     }
 
     navigateToTestResults() {
-        //todo: route to score screen
         const {navigation} = this.props
-        let score = calculateScore()
-        console.log('your score')
-        console.log(score)
+        let score = calculateScore(this.state.correctAnswers)
         navigation.navigate('EyesightTestResult', {score: score})
     }
 
@@ -79,7 +80,8 @@ export default class EyesightTestScreen extends React.Component {
                 </Text>
                 {this.shouldUpdateLetter() ? <Button title='Next!!!' onPress={this.updateLetter}/> :
                     <Button title='Show results' onPress={this.navigateToTestResults}/>}
-            < /View>
+            </View>
         )
+        //todo: the next button should not jump on click - it should be fixed to bottom
     }
 }
