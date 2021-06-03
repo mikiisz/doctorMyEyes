@@ -1,8 +1,5 @@
-import React from 'react'
-
-export default class LetterSupplier {
-
-    generateLetter() {
+export default class CharacterSupplier {
+    next() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         return characters.charAt(Math.floor(Math.random() * characters.length))
     }

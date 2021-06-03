@@ -1,5 +1,6 @@
 import React from "react"
-import {Button, Text, View} from "react-native"
+import {Text, TouchableOpacity, View} from "react-native"
+import {styles} from "../styles"
 
 class Score extends React.Component {
     score = this.props.score
@@ -8,7 +9,7 @@ class Score extends React.Component {
 
     generateComment(score, maxScore) {
         if (score < maxScore / 3) {
-            return 'You should definitely see your doctor! Your eyesight is extremely bad!'
+            return 'You should definitely see your doctor! Your eyesight is extremely bad! :('
         }
         if (score < maxScore * 2 / 3) {
             return 'Your eyesight isn\'t that bad, but you should take care of it!'
@@ -17,8 +18,8 @@ class Score extends React.Component {
     }
 
     render() {
-        return <Text>Your score: <Text
-            style={{fontWeight: 'bold'}}>{this.score} / {this.maxScore}</Text> <br/>
+        return <Text style={styles.contentText}>Your score: {' '}
+            <Text style={styles.score}>{this.score} / {this.maxScore}</Text>{'\n\n'}
             {this.comment}</Text>
     }
 }
@@ -27,12 +28,11 @@ export default function EyesightTestResultScreen(props) {
     const {route, navigation} = props
     const {score, maxScore} = route.params
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.container}>
             <Score score={score} maxScore={maxScore}/>
-            <Button
-                title="Start test again!!"
-                onPress={() => navigation.navigate('Welcome')}
-            />
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Welcome')}>
+                <Text style={styles.buttonText}>Start test again</Text>
+            </TouchableOpacity>
         </View>
-    );
+    )
 }

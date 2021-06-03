@@ -1,43 +1,21 @@
-import {Button, StyleSheet, Text, View} from "react-native"
-import React from "react";
-//todo: do not copy these styles
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#2c7587',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    score: {
-        fontWeight: "bold",
-        color: "black",
-        fontSize: 120
-    },
-    titleText: {
-        fontFamily: "Cochin",
-        fontSize: 20,
-        fontWeight: "bold",
-        marginBottom: 50
-    }
-})
+import {Text, TouchableOpacity, View} from "react-native"
+import React from "react"
+import {styles} from "../styles";
+
 export default function WelcomeScreen(props) {
     const {navigation} = props
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20}}>
-            <Text style={styles.titleText}>Welcome to doctorMyEyes app. It will help perform a basic eyesight test.
-                Remember, this app is <Text style={{color: 'red'}}> not intended </Text> to substitute your doctor
-                appointment!
-                The app will display randomly generated Snellen Chart. The letters will
-                be
-                highlighted one by one. After a letter is highlighted, you should hear a 'beep' sound indicating
-                that the
-                recording started. If you do, spell the highlighted letter. After all letters have been spelled,
-                you'll
-                receive your result.</Text>
-            <Button
-                title="Start test!"
-                    onPress={() => navigation.navigate('EyesightTest')}
-            />
+        <View style={styles.container}>
+            <Text style={styles.headerText}>Welcome to doctorMyEyes!</Text>
+            <Text style={styles.contentText}> Our app will help you perform a basic eyesight test.
+                Remember, our product is <Text style={{color: 'red'}}> not intended </Text> to substitute your doctor
+                appointment! The app will display randomly generated letters of different sizes, one by one, and after
+                each letter is shown you should spell the letter after you hear a 'beep' sound - it indicates that the
+                recording started. After all letters have been spelled, you'll receive your result. Enjoy!</Text>
+            <Text style={styles.authors}>~Monika Dziedzic, Michał Szkarłat</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EyesightTest')}>
+                <Text style={styles.buttonText}>Start test!</Text>
+            </TouchableOpacity>
         </View>
     )
 }

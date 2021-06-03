@@ -1,7 +1,8 @@
 import React from "react"
-import LetterSupplier from "../components/LetterSuppler";
-import {Button, Text, View} from "react-native";
-import calculateScore from "../components/ScoreCalculator";
+import CharacterSupplier from "../components/CharacterSupplier"
+import {Text, TouchableOpacity, View} from "react-native"
+import calculateScore from "../components/ScoreCalculator"
+import {styles} from "../styles"
 
 // todo: intercept pressing back button and display modal that test result will be lost
 export default class EyesightTestScreen extends React.Component {
@@ -10,7 +11,7 @@ export default class EyesightTestScreen extends React.Component {
 
         this.letterSizes = [120, 80, 50, 20, 15, 10, 8]
         this.maxScore = this.letterSizes.length
-        this.letterSupplier = new LetterSupplier()
+        this.characterSupplier = new CharacterSupplier()
 
         this.state = {
             letter: {},
@@ -26,8 +27,6 @@ export default class EyesightTestScreen extends React.Component {
     }
 
     startEyesightTest() {
-        console.log('test eyesight')
-
         this.updateLetter()
         this.recordVoice()
     }
@@ -36,7 +35,7 @@ export default class EyesightTestScreen extends React.Component {
         if (this.shouldUpdateLetter()) {
             let numberOfLetter = this.state.numberOfLetter
             let correctAnswers = this.state.correctAnswers
-            let newCharacter = this.letterSupplier.generateLetter()
+            let newCharacter = this.characterSupplier.next()
             this.setState(() => ({
                         letter: {
                             letterSize: this.letterSizes[numberOfLetter],
@@ -51,12 +50,11 @@ export default class EyesightTestScreen extends React.Component {
     }
 
     shouldUpdateLetter() {
-        let numberOfLetter = this.state.numberOfLetter
-        return numberOfLetter < this.letterSizes.length
+        return this.state.numberOfLetter < this.letterSizes.length
     }
 
     recordVoice() {
-        // record() todo
+        // record() todo use ExampleVoiceRecorder
     }
 
     navigateToTestResults() {
@@ -71,16 +69,20 @@ export default class EyesightTestScreen extends React.Component {
             color: color
         })
         let letterInfo = this.state.letter
-        console.log('letter info')
-        console.log(letterInfo)
 
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20}}>
+            <View style={styles.container}>
                 <Text style={letterStyle(letterInfo.letterSize, letterInfo.color)}>
                     {letterInfo.character}
                 </Text>
-                {this.shouldUpdateLetter() ? <Button title='Next!!!' onPress={this.updateLetter}/> :
-                    <Button title='Show results' onPress={this.navigateToTestResults}/>}
+                {this.shouldUpdateLetter() ?
+                    <TouchableOpacity style={styles.button} onPress={this.updateLetter}>
+                        <Text style={styles.buttonText}>Show next!</Text>
+                    </TouchableOpacity> :
+                    <TouchableOpacity style={styles.button} onPress={this.navigateToTestResults}>
+                        <Text style={styles.buttonText}>Show results</Text>
+                    </TouchableOpacity>
+                }
             </View>
         )
         //todo: the next button should not jump on click - it should be fixed to bottom
