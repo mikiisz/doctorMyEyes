@@ -4,7 +4,6 @@ import {Text, TouchableOpacity, View} from "react-native"
 import calculateScore from "../components/ScoreCalculator"
 import {styles} from "../styles"
 
-// todo: intercept pressing back button and display modal that test result will be lost
 export default class EyesightTestScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -54,6 +53,7 @@ export default class EyesightTestScreen extends React.Component {
     }
 
     recordVoice() {
+        // playBeepSound() ??
         // record() todo use ExampleVoiceRecorder
     }
 
@@ -72,9 +72,11 @@ export default class EyesightTestScreen extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Text style={letterStyle(letterInfo.letterSize, letterInfo.color)}>
-                    {letterInfo.character}
-                </Text>
+                <View style={styles.letterContainer}>
+                    <Text style={letterStyle(letterInfo.letterSize, letterInfo.color)}>
+                        {letterInfo.character}
+                    </Text>
+                </View>
                 {this.shouldUpdateLetter() ?
                     <TouchableOpacity style={styles.button} onPress={this.updateLetter}>
                         <Text style={styles.buttonText}>Show next!</Text>
@@ -85,6 +87,5 @@ export default class EyesightTestScreen extends React.Component {
                 }
             </View>
         )
-        //todo: the next button should not jump on click - it should be fixed to bottom
     }
 }

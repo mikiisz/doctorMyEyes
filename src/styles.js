@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
+    letterContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 0,
+        height: 0
+    },
     headerText: {
         fontFamily: "Cochin",
         fontSize: 35,

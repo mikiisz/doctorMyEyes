@@ -29,20 +29,21 @@ export default function MainStackNavigator() {
                 <Stack.Screen
                     name='Welcome'
                     component={WelcomeScreen}
-                    options={{title: 'Welcome Screen'}}
+                    options={{title: 'Welcome', headerLeft: () => null}}
                 />
                 <Stack.Screen
                     name='EyesightTest'
                     component={EyesightTestScreen}
-                    options={{title: 'Eyesight Test Screen'}}
+                    options={{title: 'Eyesight Test', headerLeft: () => null}}
                 />
                 <Stack.Screen
                     name='EyesightTestResult'
                     component={EyesightTestResultScreen}
                     options={({route}) => ({
-                        title: 'EyesightTestResultScreen',
+                        title: 'EyesightTest Results',
                         score: route.params.score,
-                        maxScore: route.params.maxScore
+                        maxScore: route.params.maxScore,
+                        headerLeft: () => null
                     })}
                 />
             </Stack.Navigator>
