@@ -9,6 +9,7 @@ export default class EyesightTestScreen extends React.Component {
         super(props)
 
         this.letterSizes = [120, 80, 50, 20, 15, 10, 8]
+        this.maxScore = this.letterSizes.length
         this.letterSupplier = new LetterSupplier()
 
         this.state = {
@@ -61,7 +62,7 @@ export default class EyesightTestScreen extends React.Component {
     navigateToTestResults() {
         const {navigation} = this.props
         let score = calculateScore(this.state.correctAnswers)
-        navigation.navigate('EyesightTestResult', {score: score})
+        navigation.navigate('EyesightTestResult', {score: score, maxScore: this.maxScore})
     }
 
     render() {
