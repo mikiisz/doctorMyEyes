@@ -34,6 +34,14 @@ const styles = StyleSheet.create({
         marginTop: 60,
         borderRadius: 15
     },
+    recording: {
+        alignItems: "center",
+        backgroundColor: "lightblue",
+        padding: 15,
+        height: 50,
+        marginTop: 60,
+        borderRadius: 15
+    },
     buttonText: {
         fontWeight: "bold",
         fontSize: 15
