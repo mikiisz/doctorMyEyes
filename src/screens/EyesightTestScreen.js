@@ -82,7 +82,7 @@ export default class EyesightTestScreen extends React.Component {
         const { navigation } = this.props
         this.setState({ collectingEnabled: true })
 
-        // TODO: check if results are avalible insted of hardcoded timeout
+        // TODO: check if results are avalible instead of hardcoded timeout
         new Promise(resolve => setTimeout(resolve, 20000))
             .then(() => calculateScore(this.state.correctAnswers, this.state.recordings))
             .then(score => navigation.navigate('EyesightTestResult', { score: score, maxScore: this.maxScore }))
@@ -95,7 +95,6 @@ export default class EyesightTestScreen extends React.Component {
         })
         let letterInfo = this.state.letter
 
-        // TODO: add modularity to rendered outputs
         return (
             <View style={styles.container}>
                 <View style={styles.letterContainer}>
